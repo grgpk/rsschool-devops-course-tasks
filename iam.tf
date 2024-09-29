@@ -10,16 +10,16 @@ resource "aws_iam_role" "GithubActionsRole" {
           "Federated" : var.aws_oidc_provider
         },
         "Action" : "sts:AssumeRoleWithWebIdentity",
-        "Condition" : {
-          "StringEquals": {
-            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
-          }
+        # "Condition" : {
+        #   "StringEquals": {
+        #     "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
+        #   }
 
-          "StringLike" : {
-            "token.actions.githubusercontent.com:sub" : "repo:grgpk/rsschool-devops-course-tasks:*",
+        #   "StringLike" : {
+        #     "token.actions.githubusercontent.com:sub" : "repo:grgpk/rsschool-devops-course-tasks:*",
             
-          }
-        }
+        #   }
+        # }
       }
     ]
   })
