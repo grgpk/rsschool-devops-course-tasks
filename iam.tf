@@ -13,7 +13,10 @@ resource "aws_iam_role" "GithubActionsRole" {
         "Condition" : {
           "StringEquals" : {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
-            "token.actions.githubusercontent.com:sub" : "repo:grgpk/rsschool-devops-course-tasks:ref:refs/heads/main"
+            "token.actions.githubusercontent.com:sub" : [
+              "repo:grgpk/rsschool-devops-course-tasks:ref:refs/heads/main",
+              "repo:grgpk/rsschool-devops-course-tasks:ref:refs/heads/test"
+            ]
           }
         }
       }
