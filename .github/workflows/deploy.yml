@@ -58,9 +58,6 @@ jobs:
         with:
           terraform_version: 1.9.6
 
-      - name: Terraform Init
-        run: terraform init
-
       - name: Terraform Plan
         run: terraform plan -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
 
@@ -85,9 +82,6 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.9.6
-
-      - name: Terraform Init
-        run: terraform init
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
