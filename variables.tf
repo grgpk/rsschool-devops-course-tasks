@@ -8,7 +8,7 @@ variable "aws_bucket" {
   default = "rs-devops-terraform-backend"
 }
 
-# variable "aws_oidc_provider" {
-#   description = "Will be passed from github secret"
-#   type        = string
-# }
+variable "aws_oidc_provider" {
+  description = "Will be passed from github secret"
+  type        = string
+}

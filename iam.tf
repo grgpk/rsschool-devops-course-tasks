@@ -8,16 +8,16 @@ resource "aws_iam_role" "GithubActionsRole" {
         "Effect" : "Allow",
         "Action" : "sts:AssumeRoleWithWebIdentity",
         "Principal" : {
-          "Federated" : "arn:aws:iam::635739459605:oidc-provider/token.actions.githubusercontent.com"
+          "Federated" : var.aws_oidc_provider
         },
         "Condition" : {
-          "StringEquals" : {
+          "StringEquals": {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
           },
-
+          
           "StringLike" : {
             "token.actions.githubusercontent.com:sub" : "repo:grgpk/rsschool-devops-course-tasks:*",
-
+            
           }
         }
       }
