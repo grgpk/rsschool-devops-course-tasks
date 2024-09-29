@@ -17,6 +17,10 @@ jobs:
     name: Terraform Format Check
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -43,6 +47,11 @@ jobs:
     name: Terraform Plan
     runs-on: ubuntu-latest
     needs: terraform-check
+
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -71,6 +80,11 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.event_name == 'push'
     needs: terraform-plan
+
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
