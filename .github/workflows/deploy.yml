@@ -36,10 +36,10 @@ jobs:
           terraform_version: 1.9.6
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
 
       - name: Terraform Format Check
-        run: terraform fmt -check -recursive
+        run: terraform fmt -check -recursive -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
 
   terraform-plan:
     name: Terraform Plan
@@ -62,10 +62,10 @@ jobs:
           terraform_version: 1.9.6
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
 
   # Terraform Apply (Deployment)
   terraform-apply:
@@ -90,7 +90,7 @@ jobs:
           terraform_version: 1.9.6
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="aws_oidc_provider=${{ secrets.AWS_OIDC_PROVIDER }}"
