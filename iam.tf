@@ -11,12 +11,13 @@ resource "aws_iam_role" "GithubActionsRole" {
         },
         "Action" : "sts:AssumeRoleWithWebIdentity",
         "Condition" : {
-          "StringLike" : {
+          "StringEquals": {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
-            "token.actions.githubusercontent.com:sub" : [
-              "repo:grgpk/rsschool-devops-course-tasks:ref:refs/heads/*",
-              # "repo:grgpk/rsschool-devops-course-tasks:ref:refs/heads/test"
-            ]
+          }
+
+          "StringLike" : {
+            "token.actions.githubusercontent.com:sub" : "repo:grgpk/rsschool-devops-course-tasks:*",
+            
           }
         }
       }
