@@ -28,9 +28,8 @@ jobs:
       - name: Configure AWS Credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_GITHUB_ACTION_ROLE }}
+          role-to-assume: arn:aws:iam::635739459605:role/GithubActionsRole
           aws-region: eu-central-1
-          role-session-name: MySessionName
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
@@ -61,7 +60,6 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_ACTION_ROLE }}
           aws-region: eu-central-1
-          role-session-name: MySessionName
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
@@ -94,7 +92,6 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_GITHUB_ACTION_ROLE }}
           aws-region: eu-central-1
-          role-session-name: MySessionName
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
