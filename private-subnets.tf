@@ -2,7 +2,7 @@
 resource "aws_subnet" "private_subnet_1" {
   vpc_id            = aws_vpc.demo_vpc.id
   cidr_block        = "10.0.3.0/24"
-  availability_zone = "ueu-central-1a"
+  availability_zone = "eu-central-1a"
 
   tags = {
     Name = "private-subnet"
